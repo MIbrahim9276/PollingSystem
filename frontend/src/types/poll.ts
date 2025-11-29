@@ -1,5 +1,5 @@
 export type PollType = 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE' | 'RANKED_CHOICE';
-export type CountingStrategy = 'FIRST_PAST_THE_POST' | 'INSTANT_RUNOFF' | 'WEIGHTED_COUNTING'
+export type CountingStrategy = 'FIRST_PAST_THE_POST' | 'INSTANT_RUNOFF'
 
 export interface PollOption {
   id: string;
@@ -42,7 +42,7 @@ export interface SubmitVoteRequest {
 }
 
 export interface GetResultsRequest {
-  votingStrategy: 'FIRST_PAST_THE_POST' | 'INSTANT_RUNOFF' | 'WEIGHTED_COUNTING'
+  votingStrategy: CountingStrategy
 }
 
 export interface PollResults {

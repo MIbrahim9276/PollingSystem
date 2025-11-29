@@ -5,7 +5,6 @@ import com.pollingsystem.polling_api.service.ResultService;
 import com.pollingsystem.polling_api.strategy.FirstPastThePostStrategy;
 import com.pollingsystem.polling_api.strategy.InstantRunoffStrategy;
 import com.pollingsystem.polling_api.strategy.VoteCountingStrategy;
-import com.pollingsystem.polling_api.strategy.WeightedCountingStrategy;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -37,9 +36,6 @@ public class ResultController {
                 break;
             case "INSTANT_RUNOFF":
                 strategy = new InstantRunoffStrategy();
-                break;
-            case "WEIGHTED_COUNTING":
-                strategy = new WeightedCountingStrategy();
                 break;
             default:
                 return ResponseEntity.badRequest().build();

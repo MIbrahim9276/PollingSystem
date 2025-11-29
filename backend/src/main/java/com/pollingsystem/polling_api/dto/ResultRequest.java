@@ -6,8 +6,8 @@ import jakarta.validation.constraints.Pattern;
 public class ResultRequest {
     @NotBlank
     @Pattern(
-            regexp = "FIRST_PAST_THE_POST|INSTANT_RUNOFF|WEIGHTED_COUNTING",
-            message = "Must be one of FIRST_PAST_THE_POST, INSTANT_RUNOFF, or WEIGHTED_COUNTING"
+            regexp = "FIRST_PAST_THE_POST|INSTANT_RUNOFF",
+            message = "Must be one of FIRST_PAST_THE_POST or INSTANT_RUNOFF"
     )
     public String votingStrategy;
 }

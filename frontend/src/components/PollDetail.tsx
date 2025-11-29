@@ -131,7 +131,6 @@ export function PollDetail({ pollId, onBack }: PollDetailProps) {
                 { label: 'Instant Runoff', value: 'INSTANT_RUNOFF' as CountingStrategy }
               ] : [
                 { label: 'First Past The Post', value: 'FIRST_PAST_THE_POST' as CountingStrategy },
-                { label: 'Weighted Counting', value: 'WEIGHTED_COUNTING' as CountingStrategy },
               ]
             ).map((option) => (
               <button
