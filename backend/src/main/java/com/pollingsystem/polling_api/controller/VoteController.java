@@ -6,6 +6,7 @@ import com.pollingsystem.polling_api.domain.Vote;
 import com.pollingsystem.polling_api.dto.VoteRequest;
 import com.pollingsystem.polling_api.repository.PollRepository;
 import com.pollingsystem.polling_api.service.VoteService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -30,14 +31,15 @@ public class VoteController {
     @PostMapping
     public ResponseEntity<Void> submitVote(
             @PathVariable("pollId") String pollId,
-            @Valid @RequestBody VoteRequest request
+            @Valid @RequestBody VoteRequest body,
+            HttpServletRequest request
             ) {
         Poll poll = pollRepository.findById(pollId);
         if (poll == null) return ResponseEntity.badRequest().build();
 
         List<Option> selectedOptions = new ArrayList<>();
-        if (request.selected != null && !request.selected.isEmpty()) {
-            selectedOptions = request.selected.stream()
+        if (body.selected != null && !body.selected.isEmpty()) {
+            selectedOptions = body.selected.stream()
                     .map(id -> poll.getOptions().stream()
                             .filter(opt -> opt.getId().equals(id))
                             .findFirst()
@@ -46,8 +48,8 @@ public class VoteController {
         }
 
         List<Option> rankedOptions = new ArrayList<>();
-        if (request.ranked != null && !request.ranked.isEmpty()) {
-            rankedOptions = request.ranked.stream()
+        if (body.ranked != null && !body.ranked.isEmpty()) {
+            rankedOptions = body.ranked.stream()
                     .map(id -> poll.getOptions().stream()
                             .filter(opt -> opt.getId().equals(id))
                             .findFirst()
@@ -55,7 +57,7 @@ public class VoteController {
                     ).toList();
         }
 
-        Vote vote = new Vote(request.username, selectedOptions, rankedOptions, request.weight, request.ip);
+        Vote vote = new Vote(body.username, selectedOptions, rankedOptions, body.weight, request.getRemoteAddr());
         service.addVote(pollId, vote);
 
         return ResponseEntity.ok().build();
