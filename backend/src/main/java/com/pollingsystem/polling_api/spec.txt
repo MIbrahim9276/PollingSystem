@@ -1,0 +1,101 @@
+Create Poll
+    Request
+        {
+            "title": "Test Poll 1",
+            "description": "First Test of Poll Creation",
+            "pollType": "SINGLE_CHOICE",
+            "options": [
+                "Red", "Green", "Blue"
+            ]
+        }
+    Response
+        {
+            "id": "f9255e36-ec9d-4612-b4f4-2d3923dd314d",
+            "title": "Test Poll 1",
+            "description": "First Test of Poll Creation",
+            "options": [
+                {
+                    "id": "38a93139-4c65-48df-9386-21c82c5676d1",
+                    "text": "Red"
+                },
+                {
+                    "id": "656c3056-cfa4-41a3-9ba7-73b4ff74e391",
+                    "text": "Green"
+                },
+                {
+                    "id": "1fcb3597-2075-4de6-9d3d-2bc7b3644fd2",
+                    "text": "Blue"
+                }
+            ],
+            "closed": false,
+            "votes": []
+        }
+List All Polls
+    Response
+        [
+            {
+                "id": "f9255e36-ec9d-4612-b4f4-2d3923dd314d",
+                "title": "Test Poll 1",
+                "description": "First Test of Poll Creation",
+                "options": [
+                    {
+                        "id": "38a93139-4c65-48df-9386-21c82c5676d1",
+                        "text": "Red"
+                    },
+                    {
+                        "id": "656c3056-cfa4-41a3-9ba7-73b4ff74e391",
+                        "text": "Green"
+                    },
+                    {
+                        "id": "1fcb3597-2075-4de6-9d3d-2bc7b3644fd2",
+                        "text": "Blue"
+                    }
+                ],
+                "closed": false,
+                "votes": []
+            }
+        ]
+Get Poll By Id
+    Response
+        {
+            "id": "61675310-1de6-4fe5-af32-659ab6fe5725",
+            "title": "Test Poll 1",
+            "description": "First Test of Poll Creation",
+            "options": [
+                {
+                    "id": "af2207d7-4a77-4178-9470-9ceff83eca1c",
+                    "text": "Red"
+                },
+                {
+                    "id": "6d253354-e228-4ea2-afd6-188ae14cbb46",
+                    "text": "Green"
+                },
+                {
+                    "id": "01a3eb59-6ce6-4c4e-add8-76d6ad5ac301",
+                    "text": "Blue"
+                }
+            ],
+            "closed": false,
+            "votes": []
+        }
+Close Poll
+    Response Status
+Submit a Vote
+    Request
+        {
+            "username": "bob",
+            "ip": "127.0.0.1",
+            "selected": [
+                "07085fc5-1e65-46e9-b6b8-f9667afffa86"
+            ]
+        }
+    Response Status
+Get Vote Count
+    Response Integer
+Get Results
+    Response
+        {
+            "656c3056-cfa4-41a3-9ba7-73b4ff74e391": 0,
+            "38a93139-4c65-48df-9386-21c82c5676d1": 0,
+            "1fcb3597-2075-4de6-9d3d-2bc7b3644fd2": 0
+        }
