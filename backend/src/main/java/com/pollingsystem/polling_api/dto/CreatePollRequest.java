@@ -17,6 +17,6 @@ public class CreatePollRequest {
     @NotNull
     public List<String> options;
 
-    public List<String> restrictedIps;
+    public List<String> allowedIps;
     public String endTime;
 }

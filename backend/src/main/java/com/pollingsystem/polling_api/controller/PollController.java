@@ -34,8 +34,8 @@ public class PollController {
                 .toList();
         Poll poll = service.createPoll(request.title, request.description, options, request.pollType);
 
-        if (request.restrictedIps != null && !request.restrictedIps.isEmpty())
-            service.applyIPRestriction(poll.getId(), new HashSet<>(request.restrictedIps));
+        if (request.allowedIps != null && !request.allowedIps.isEmpty())
+            service.applyIPRestriction(poll.getId(), new HashSet<>(request.allowedIps));
         if (request.endTime != null && !request.endTime.isEmpty())
             service.applyTimeLimit(poll.getId(), LocalDateTime.parse(request.endTime));
 
